@@ -1,0 +1,22 @@
+---  
+  - name: Install Prometheus
+    yum:
+      name: prometheus
+      state: latest
+
+  - name: Start Prometheus
+    service:
+      name: prometheus
+      state: started
+      enabled: yes
+
+  - name: Open Prometheus port
+    firewalld:
+      port: 9090/tcp
+      permanent: yes
+      state: enabled
+
+  - name: Reload firewalld
+    service:
+      name: firewalld
+      state: reloaded

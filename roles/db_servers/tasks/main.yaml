@@ -1,0 +1,14 @@
+- name: Update apt cache
+  apt: update_cache=yes
+
+- name: Install required packages
+  apt: name={{ item }} state=present
+  with_items:
+    - apache2
+    - php
+    - build-essential
+    - prometheus
+    - openssl
+    - libssl-dev
+    - unzip
+    - wget
